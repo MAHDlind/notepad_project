@@ -1,0 +1,11 @@
+
+{% extends 'notes/base.html' %}
+{% block title %}Add/Edit Note{% endblock %}
+{% block content %}
+<h2>{% if note %}Edit{% else %}Add{% endif %} Note</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success">Save</button>
+</form>
+{% endblock %}
