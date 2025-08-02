@@ -1,11 +1,53 @@
-
 {% extends 'notes/base.html' %}
 {% block title %}Register{% endblock %}
+
 {% block content %}
-<h2>Create Account</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-success">Register</button>
-</form>
+    <div class="d-flex justify-content-center align-items-center min-vh-100 fade-in">
+        <div class="card shadow-lg p-4" style="min-width: 350px; max-width: 400px; width: 100%;">
+            <h3 class="text-center mb-4">📝 Create Account</h3>
+
+            <form method="post" novalidate>
+                {% csrf_token %}
+
+                {% for field in form %}
+                    <div class="mb-3 position-relative">
+                        <label class="form-label">{{ field.label }}</label>
+                        {{ field }}
+                        {% if field.name in ['password1', 'password2'] %}
+                            <span class="position-absolute top-50 end-0 translate-middle-y me-3"
+                                  onclick="togglePassword('{{ field.auto_id }}', this)" style="cursor: pointer;">
+              👁️
+            </span>
+                        {% endif %}
+                        {% if field.errors %}
+                            <div class="text-danger small">{{ field.errors|striptags }}</div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-success">
+                        <i class="bi bi-person-plus-fill"></i> Register
+                    </button>
+                </div>
+            </form>
+
+            <div class="text-center mt-3">
+                <small>Already have an account? <a href="{% url 'login' %}">Login</a></small>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function togglePassword(fieldId, iconElement) {
+            const field = document.getElementById(fieldId);
+            if (field.type === "password") {
+                field.type = "text";
+                iconElement.textContent = "🙈";
+            } else {
+                field.type = "password";
+                iconElement.textContent = "👁️";
+            }
+        }
+    </script>
 {% endblock %}

@@ -1,0 +1,41 @@
+{% extends "notes/base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="text-center">
+            <h1 class="mb-4">👋 Welcome to My First Django Project</h1>
+            <p class="lead">
+                This web application was developed using
+                <a href="https://www.djangoproject.com/" class="site">Django</a>, a powerful and flexible Python
+                framework.
+            </p>
+        </div>
+
+        <div class="card p-4 mt-5">
+            <h3 class="mb-3">🧾 About this Project</h3>
+            <p>
+                This is a simple note-taking web app where registered users can create, edit, and delete their personal
+                notes.
+                The application features user authentication, dashboard access, and secure data management using
+                Django’s built-in user system.
+            </p>
+            <p>
+                The main purpose of this project is to practice building secure, functional, and user-friendly web
+                applications using Django.
+            </p>
+            <p>
+                It also serves as a foundation for future upgrades, such as adding categories, search functionality, and
+                a more advanced UI.
+            </p>
+        </div>
+
+        <div class="text-center mt-4">
+            <p class="lead">
+                Feel free to connect with me:
+            </p>
+            <a href="https://github.com/MAHDlind" target="_blank" class="btn btn-dark">GitHub</a>
+            <a href="https://www.linkedin.com/in/mahdi-hosseinkhani-4551202a4" target="_blank" class="btn btn-primary">LinkedIn</a>
+        </div>
+    </div>
+{% endblock %}

@@ -1,8 +1,125 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
 
 body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     background-color: #f5f5f5;
 }
 .card {
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    color: red;
+}
+
+.btn {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  margin-right: 10px;
+  transition: background 0.3s ease;
+}
+
+.edit-btn {
+  background-color: #4CAF50;
+}
+
+.edit-btn:hover {
+  background-color: #45a049;
+}
+
+.delete-btn {
+  background-color: #f44336;
+}
+
+.delete-btn:hover {
+  background-color: #da190b;
+}
+
+.first-django-project {
+    text-align: center;
+}
+
+.site {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  margin-right: 2px;
+  transition: background 0.9s ease;
+}
+
+.navbar.navbar-expand-lg.navbar-dark.bg-dark.px-3 {
+    background-color: red;
+}
+
+.button-navbar {
+    background-color: #212529;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: auto;
+}
+
+.button-navbar a.designed-by {
+    color: #f8f9fa;
+    text-decoration: none;
+}
+
+.button-navbar a.designed-by:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 991px) {
+  .navbar-collapse {
+    transition: max-height 0.4s ease, opacity 0.4s ease;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+  }
+
+  .navbar-collapse.show {
+    max-height: 500px;
+    opacity: 1;
+  }
+}
+
+/* Footer */
+.button-navbar {
+  background-color: #212529;
+  color: white;
+  text-align: center;
+}
+.button-navbar a.designed-by:hover {
+  text-decoration: underline;
+}
+
+/* Buttons */
+.btn {
+  border-radius: 8px;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
