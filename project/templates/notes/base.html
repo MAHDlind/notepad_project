@@ -56,36 +56,47 @@
 </div>
 <footer class="bg-dark text-white mt-5 pt-4 pb-3">
     <div class="container">
-        <div class="row text-center text-md-start">
+        <div class="row text-center text-sm-start">
 
             <!-- Logo -->
-            <div class="col-md-3 mb-3">
+            <div class="col-12 col-sm-6 col-md-3 mb-4">
                 <h5><i class="bi bi-journal-text"></i> NotePad</h5>
-                <p class="text-muted small">Designed by <a href="https://github.com/MAHDlind" class="text-white"
-                                                           target="_blank">Mahdi</a></p>
+                <p class="text-light small">
+                    Designed by <a href="https://github.com/MAHDlind" class="text-white" target="_blank">Mahdi</a>
+                </p>
             </div>
 
             <!-- Address -->
-            <div class="col-md-3 mb-3">
+            <div class="col-12 col-sm-6 col-md-3 mb-4">
                 <h6><i class="bi bi-geo-alt"></i> Address</h6>
                 <p class="small">Adl Sq, Qazvin, Qazvin Province, Iran</p>
             </div>
 
             <!-- Email -->
-            <div class="col-md-3 mb-3">
+            <div class="col-12 col-sm-6 col-md-3 mb-4">
                 <h6><i class="bi bi-envelope"></i> Email</h6>
                 <p class="small">qwrwfwftsewqr@gmail.com</p>
             </div>
 
             <!-- Quick Links -->
-            <div class="col-md-3 mb-3">
+            <div class="col-12 col-sm-6 col-md-3 mb-4">
                 <h6><i class="bi bi-link-45deg"></i> Quick Links</h6>
                 <ul class="list-unstyled small">
-                    <li><a href="{% url 'home' %}" class="text-white">Home</a></li>
-                    <li><a href="{% url 'create_note' %}" class="text-white">Create Note</a></li>
-                    <li><a href="{% url 'login' %}" class="text-white">Login</a></li>
+                    {% if request.path != '/' %}
+                        <li><a href="{% url 'home' %}" class="text-white">Home</a></li>
+                    {% endif %}
+                    {% if request.path == '/dashboard/' %}
+                        <li><a href="{% url 'create_note' %}" class="text-white">Create Note</a></li>
+                    {% endif %}
+                    {% if request.path == '/' or request.path == '/register/' %}
+                        <li><a href="{% url 'login' %}" class="text-white">Login</a></li>
+                    {% endif %}
+                    {% if request.path == '/' or request.path == '/login/' %}
+                        <li><a href="{% url 'register' %}" class="text-white">Register</a></li>
+                    {% endif %}
                 </ul>
             </div>
+
         </div>
     </div>
 </footer>
