@@ -48,18 +48,19 @@ login_required()
 
 @login_required
 def dashboard(request):
-    category = request.GET.get('category')
-    notes = models.Note.objects.filter(user=request.user)
+    user_notes = models.Note.objects.filter(user=request.user).order_by('-created_at')
 
-    if category:
-        notes = notes.filter(category=category)
+    # دریافت فیلتر از URL
+    category_filter = request.GET.get('category')
+    if category_filter:
+        user_notes = user_notes.filter(category=category_filter)
 
-    # جمع‌آوری لیست دسته‌بندی‌ها (یونیک)
     categories = models.Note.objects.filter(user=request.user).values_list('category', flat=True).distinct()
 
     return render(request, 'notes/dashboard.html', {
-        'notes': notes,
+        'notes': user_notes,
         'categories': categories,
+        'active_category': category_filter,
     })
 
 

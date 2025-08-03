@@ -13,17 +13,18 @@
                     <div class="mb-3 position-relative">
                         <label class="form-label">{{ field.label }}</label>
                         {{ field }}
-                        {% if field.name in ['password1', 'password2'] %}
+                        {% if field.name == 'password1' or field.name == 'password2' %}
                             <span class="position-absolute top-50 end-0 translate-middle-y me-3"
                                   onclick="togglePassword('{{ field.auto_id }}', this)" style="cursor: pointer;">
-              👁️
-            </span>
+        👁️
+      </span>
                         {% endif %}
                         {% if field.errors %}
                             <div class="text-danger small">{{ field.errors|striptags }}</div>
                         {% endif %}
                     </div>
                 {% endfor %}
+
 
                 <div class="d-grid">
                     <button type="submit" class="btn btn-success">
