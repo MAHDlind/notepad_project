@@ -14,8 +14,8 @@
             </p>
 
             <div class="mt-4 d-flex justify-content-between">
-                <a href="{% url 'edit_note' note.id %}" class="btn btn-success">✏️ Edit</a>
-                <a href="{% url 'delete_note' note.id %}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this note?')">🗑️ Delete</a>
+                <a href="{% url 'notes:edit_note' note.id %}" class="btn btn-success">✏️ Edit</a>
+                <a href="{% url 'notes:delete_note' note.id %}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this note?')">🗑️ Delete</a>
             </div>
         </div>
     </div>

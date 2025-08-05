@@ -1,0 +1,30 @@
+<div class="todos-section mt-4 px-2">
+    <h3 class="mb-3">🗓️ Weekly Tasks</h3>
+    <a href="{% url 'todos:create' %}">create</a>
+    <div class="d-flex overflow-auto gap-3">
+        {% for day, todos in todos_by_day.items %}
+            <div class="card shadow-sm p-3" style="min-width: 300px;">
+                <h5 class="card-title text-primary">{{ day.get_day_display }}</h5>
+
+
+                {% if todos %}
+                    <ul class="list-group list-group-flush mb-2">
+                        {% for todo in todos %}
+                            <li class="list-group-item d-flex justify-content-between align-items-center {% if todo.is_completed %}text-muted{% endif %}">
+                                {{ todo.title }}
+                                {% if todo.is_completed %}
+                                    <span class="badge bg-success">✓</span>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="text-muted">No tasks for this day.</p>
+                {% endif %}
+
+                <a href="#" class="btn btn-sm btn-outline-secondary mt-2">Edit</a>
+
+            </div>
+        {% endfor %}
+    </div>
+</div>

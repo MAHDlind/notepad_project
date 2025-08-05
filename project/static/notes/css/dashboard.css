@@ -1,0 +1,23 @@
+.toggle-navbar {
+    background-color: #212529; /* رنگ مشابه navbar اصلی */
+}
+
+.toggle-btn {
+    border: none;
+    font-weight: 500;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.toggle-btn.active {
+    background-color: #495057;
+    color: #fff;
+}
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#notes-section, #todos-section {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}

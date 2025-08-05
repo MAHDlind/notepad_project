@@ -1,0 +1,21 @@
+{% extends 'notes/base.html' %}
+
+{% block content %}
+    <h1>Add New Todo Item</h1>
+
+<hr>
+<form action="{% url 'todos:add_todo_item' %}" method="post" class="mb-4">
+  {% csrf_token %}
+  <div class="row">
+    <div class="col-md-4">
+      {{ form.day }}
+    </div>
+    <div class="col-md-6">
+      {{ form.title }}
+    </div>
+    <div class="col-md-2">
+      <button type="submit" class="btn btn-primary w-100">Add Task</button>
+    </div>
+  </div>
+</form>
+{% endblock %}

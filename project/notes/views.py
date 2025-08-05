@@ -21,7 +21,7 @@ def login_page(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('dashboard')
+                return redirect('notes:dashboard')
     else:
         form = AuthenticationForm()
     return render(request, 'notes/login.html', {'form':form})
@@ -32,7 +32,7 @@ def register_page(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Registration successful! You can now login.')
-            return redirect('login')
+            return redirect('notes:login')
     else:
         form = forms.RegisterForm()
     return render(request, 'notes/register.html', {'form': form})
@@ -42,7 +42,7 @@ def note_page(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('login')
+    return redirect('notes:login')
 login_required()
 
 
@@ -72,7 +72,7 @@ def create_note(request):
             note = form.save(commit=False)
             note.user = request.user
             note.save()
-            return redirect('dashboard')
+            return redirect('notes:dashboard')
     else:
         form = forms.NoteForm()
 
@@ -87,14 +87,14 @@ def edit_note(request, note_id):
         form = forms.NoteForm(request.POST, instance=note)
         if form.is_valid():
             form.save()
-            return redirect('dashboard')
+            return redirect('notes:dashboard')
     return render(request, 'notes/note_form.html', {'form': form})
 
 @login_required
 def delete_note(request, note_id):
     note = get_object_or_404(models.Note, id=note_id, user=request.user)
     note.delete()
-    return redirect('dashboard')
+    return redirect('notes:dashboard')
 
 @login_required
 def note_detail(request, note_id):

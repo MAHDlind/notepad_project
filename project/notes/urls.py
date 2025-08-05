@@ -6,6 +6,8 @@ from notes.views import (
     note_detail
 )
 
+app_name = 'notes'
+
 urlpatterns = [
     path('', home_page, name='home'),
     path('notes_form/', note_page, name='add_note'),

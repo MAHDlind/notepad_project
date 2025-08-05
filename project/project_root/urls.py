@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls), # Include admin app's URL configuration'
     path("__reload__/", include("django_browser_reload.urls")), # Include browser-reload app's URL configuration'
     path('', include('notes.urls')), # Include notes app's URL configuration'
+    path('todo', include('todos.urls')), # Include todos app's URL configuration'
 ]
