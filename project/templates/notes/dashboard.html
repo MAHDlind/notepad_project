@@ -2,14 +2,6 @@
 {% load static %}
 {% block content %}
 
-<!-- Navbar دوم برای Notes/Todos -->
-<div class="d-flex justify-content-center mb-4">
-    <div class="toggle-navbar d-flex bg-dark text-white rounded-pill px-3 py-2 shadow-sm">
-        <button id="btn-notes" class="toggle-btn active btn btn-dark rounded-pill px-3">Notes</button>
-        <button id="btn-todos" class="toggle-btn btn btn-dark rounded-pill px-3 ms-2">Todos</button>
-    </div>
-</div>
-
 <!-- بخش Notes -->
 <div id="notes-section" class="container mt-4">
     <!-- Header -->
@@ -77,9 +69,6 @@
     {% endif %}
 </div>
 
-<div id="todos-section" class="container mt-4 d-none">
-    {% include 'todos/dashboard.html' %}
-</div>
 
 <script src="{% static 'notes/js/dashboard.js' %}" defer></script>
 {% endblock %}
