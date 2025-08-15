@@ -22,10 +22,12 @@ Notepad Project is a simple Django-based web application designed to serve as a 
    git clone https://github.com/yourusername/notepad_project.git
    cd notepad_project
    ```
+2. Create a virtual environment and activate it:
    ```bash
     python -m venv .venv
     source .venv/bin/activate  # On Windows use `.venv\Scripts\activate`
    ```
+3. Install the required packages:
    ```bash
    pip install -r requirements.txt
    ```
