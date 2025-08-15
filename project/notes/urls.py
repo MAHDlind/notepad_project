@@ -1,5 +1,5 @@
 from django.urls import path
-from notes.views import (
+from .views import (
     home_page, login_page, register_page,
     note_page, logout_view, dashboard,
     create_note, edit_note, delete_note,
