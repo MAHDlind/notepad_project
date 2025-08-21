@@ -10,7 +10,7 @@ from django.contrib.auth.decorators import login_required
 
 
 def home_page(request):
-    return render(request, 'notes/home_page.html')
+    return render(request, 'notes/../templates/notes/home_page.html')
 
 def login_page(request):
     if request.method == 'POST':
@@ -24,7 +24,7 @@ def login_page(request):
                 return redirect('notes:dashboard')
     else:
         form = AuthenticationForm()
-    return render(request, 'notes/login.html', {'form':form})
+    return render(request, 'notes/../templates/notes/login.html', {'form':form})
 
 def register_page(request):
     if request.method == 'POST':
@@ -35,10 +35,10 @@ def register_page(request):
             return redirect('notes:login')
     else:
         form = forms.RegisterForm()
-    return render(request, 'notes/register.html', {'form': form})
+    return render(request, 'notes/../templates/notes/register.html', {'form': form})
 
 def note_page(request):
-    return render(request, 'notes/note_form.html')
+    return render(request, 'notes/../templates/notes/note_form.html')
 
 def logout_view(request):
     logout(request)
@@ -57,7 +57,7 @@ def dashboard(request):
 
     categories = models.Note.objects.filter(user=request.user).values_list('category', flat=True).distinct()
 
-    return render(request, 'notes/dashboard.html', {
+    return render(request, 'notes/../templates/notes/dashboard.html', {
         'notes': user_notes,
         'categories': categories,
         'active_category': category_filter,
@@ -76,7 +76,7 @@ def create_note(request):
     else:
         form = forms.NoteForm()
 
-    return render(request, 'notes/note_form.html', {'form': form})
+    return render(request, 'notes/../templates/notes/note_form.html', {'form': form})
 
 
 @login_required
@@ -88,7 +88,7 @@ def edit_note(request, note_id):
         if form.is_valid():
             form.save()
             return redirect('notes:dashboard')
-    return render(request, 'notes/note_form.html', {'form': form})
+    return render(request, 'notes/../templates/notes/note_form.html', {'form': form})
 
 @login_required
 def delete_note(request, note_id):
@@ -99,4 +99,4 @@ def delete_note(request, note_id):
 @login_required
 def note_detail(request, note_id):
     note = get_object_or_404(models.Note, id=note_id, user=request.user)
-    return render(request, 'notes/note_detail.html', {'note': note})
+    return render(request, 'notes/../templates/notes/note_detail.html', {'note': note})
